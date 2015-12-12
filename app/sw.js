@@ -34,11 +34,11 @@ this.addEventListener('fetch', function (event) {
         return caches.match('/app/view1/fallback.html');
     }));
     console.log("EVENT URL : " + event.request.url);
-    if (OFFLINK_DYNAMIC_CACHE[event.request.url] != null) {
-        fetch(OFFLINK_DYNAMIC_CACHE[event.request.url]).then(function (r) {
-            cache.put(OFFLINK_DYNAMIC_CACHE[event.request.url], r);
-        });
-    }
+    //if (OFFLINK_DYNAMIC_CACHE[event.request.url] != null) {
+    //    fetch(OFFLINK_DYNAMIC_CACHE[event.request.url]).then(function (r) {
+    //        cache.put(OFFLINK_DYNAMIC_CACHE[event.request.url], r);
+    //    });
+    //}
 });
 
 this.addEventListener('activate', function (event) {
