@@ -1,5 +1,7 @@
 var v = 1.4;
-this.importScripts('manifest.js');
+if ('undefined' === typeof window) {
+    importScripts('manifest.js');
+}
 this.addEventListener('install', function (event) {
     console.log("install event");
     event.waitUntil(
