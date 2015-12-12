@@ -7,7 +7,8 @@ this.addEventListener('install', function (event) {
         caches.open(v).then(function (cache) {
             return cache.addAll([
                 '/app/view1/view1.html',
-                '/app/view2/view2.html'
+                '/app/view2/view2.html',
+                '/app/view1/fallback.html'
             ]);
         })
     );
