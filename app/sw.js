@@ -26,7 +26,7 @@ this.addEventListener('fetch', function (event) {
         return response.clone();
     }).catch(function () {
         console.log("asdasdasdasdasda");
-        return caches.match('/sw-test/gallery/myLittleVader.jpg');
+        return caches.match('https://github.com/images/modules/dashboard/bootcamp/octocat_collabocats.png');
     }));
 });
 
