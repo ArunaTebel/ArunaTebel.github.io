@@ -43,16 +43,16 @@ this.addEventListener('activate', function (event) {
     );
 });
 
-var ServiceWorker = angular.module('ServiceWorkerModule', []);
-var res = [];
-var v;
-ServiceWorker.factory('swService', [function () {
-    return {
-        addAll: function (resources) {
-            res = resources;
-        },
-        setVersion: function (version) {
-            v = version;
-        }
-    }
-}]);
+//var ServiceWorker = angular.module('ServiceWorkerModule', []);
+//var res = [];
+//var v;
+//ServiceWorker.factory('swService', [function () {
+//    return {
+//        addAll: function (resources) {
+//            res = resources;
+//        },
+//        setVersion: function (version) {
+//            v = version;
+//        }
+//    }
+//}]);
