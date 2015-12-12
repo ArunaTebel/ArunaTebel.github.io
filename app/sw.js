@@ -1,3 +1,5 @@
+var v = 1.4;
+
 this.addEventListener('install', function (event) {
     console.log("install event");
     event.waitUntil(
@@ -7,7 +9,7 @@ this.addEventListener('install', function (event) {
             //    '/app/view2/view2.html',
             //    '/app/view1/fallback.html'
             //]);
-            return cache.addAll(res);
+            return cache.addAll(OFFLINK_CACHE);
         })
     );
 });
@@ -42,17 +44,3 @@ this.addEventListener('activate', function (event) {
         })
     );
 });
-
-var ServiceWorker = angular.module('ServiceWorkerModule', []);
-var res = [];
-var v;
-ServiceWorker.factory('swService', [function () {
-    return {
-        addAll: function (resources) {
-            res = resources;
-        },
-        setVersion: function (version) {
-            v = version;
-        }
-    }
-}]);

@@ -6,17 +6,12 @@ angular.module('myApp', [
     'myApp.view1',
     'myApp.view2',
     'myApp.version',
+    'ServiceWorkerModule',
     'OfflinkJs'
 ]).
     config(['$routeProvider', function ($routeProvider) {
         $routeProvider.otherwise({redirectTo: '/view1'});
     }])
     .run(['ServiceWorkerService', function (ServiceWorkerService) {
-        var resources = [
-            '/app/view1/view1.html',
-            '/app/view2/view2.html',
-            '/app/view1/fallback.html'
-        ];
-        ServiceWorkerService.cache.addAll(resources);
         ServiceWorkerService.register('/app/sw.js', 1.3);
     }]);
