@@ -40,7 +40,7 @@ this.addEventListener('activate', function (event) {
     event.waitUntil(
         caches.keys().then(function (keyList) {
             return Promise.all(keyList.map(function (key) {
-                console.log(key);
+                console.log(typeof key);
                 if (cacheWhitelist.indexOf(key) === -1) {
                     console.log(cacheWhitelist.indexOf(key));
                     return caches.delete(key);
