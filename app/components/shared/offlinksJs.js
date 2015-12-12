@@ -3,8 +3,6 @@
  */
 
 var OfflinkJs = angular.module('OfflinkJs', ['LocalStorageModule']);
-var filePath = document.currentScript.src;
-alert(filePath);
 OfflinkJs.factory("ConnectionDetectorService", [function () {
 
     var conDetectFunction = URL.createObjectURL(new Blob(['(',
@@ -71,6 +69,38 @@ OfflinkJs.config(['$httpProvider', 'localStorageServiceProvider', function ($htt
     localStorageServiceProvider
         .setPrefix('flnk')
         .setNotify(true, true);
+}]);
+
+OfflinkJs.factory('serviceWorkerService', [function () {
+    var res = [];
+    return {
+        cache: {
+            addAll: function(resources){
+                res = resources;
+            },
+            getAll: function () {
+                return res;
+            }
+        },
+        register: function (path) {
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.register(path).then(function (reg) {
+
+                    if (reg.installing) {
+                        console.log('Service worker installing');
+                    } else if (reg.waiting) {
+                        console.log('Service worker installed');
+                    } else if (reg.active) {
+                        console.log('Service worker active');
+                    }
+
+                }).catch(function (error) {
+                    // registration failed
+                    console.log('Registration failed with ' + error);
+                });
+            }
+        }
+    };
 }]);
 
 OfflinkJs.factory('cacheInterceptor', ['localStorageService', function (localStorageService) {
