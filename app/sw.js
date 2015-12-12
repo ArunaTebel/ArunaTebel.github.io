@@ -26,7 +26,7 @@ this.addEventListener('fetch', function (event) {
         return response.clone();
     }).catch(function () {
         console.log("asdasdasdasdasda");
-        return caches.match('https://github.com');
+        return caches.match('/app/view1/fallback.html');
     }));
 });
 
