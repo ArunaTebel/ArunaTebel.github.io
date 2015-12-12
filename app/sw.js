@@ -54,10 +54,10 @@ this.addEventListener('fetch', function (event) {
     //    console.log("fallback!");
     //    return caches.match('/app/view1/fallback.html');
     //}));
-    console.log("EVENT URL : " + event.request.url);
-    console.log("DOMAIN : " + self.location.hostname);
-    console.log("DOMAIN : " + self.location.port);
-    console.log("DOMAIN : " + self.location.protocol);
+    //console.log("EVENT URL : " + event.request.url);
+    var prefix = self.location.protocol + "//" + self.location.hostname + (self.location.port ? ':' + self.location.port : '');
+    var rel_path = (event.request.url + "").split(prefix)[0];
+    console.log("rel path " + rel_path);
     if (OFFLINK_DYNAMIC_CACHE[event.request.url] != null) {
         fetch(OFFLINK_DYNAMIC_CACHE[event.request.url]).then(function (r) {
             cache.put(OFFLINK_DYNAMIC_CACHE[event.request.url], r);
