@@ -20,6 +20,7 @@ this.addEventListener('fetch', function (event) {
     console.log("fetch event");
     var response;
     event.respondWith(caches.match(event.request).catch(function () {
+        console.log(event.request);
         return fetch(event.request);
     }).then(function (r) {
         response = r;
