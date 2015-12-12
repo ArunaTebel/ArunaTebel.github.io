@@ -46,7 +46,7 @@
 <script src="components/version/interpolate-filter.js"></script>
 <script>
     if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('/app/components/shared/sw.js', {scope: '/app/'}).then(function (reg) {
+        navigator.serviceWorker.register('/app/components/shared/sw.js', {scope: '../../'}).then(function (reg) {
 
             if (reg.installing) {
                 console.log('Service worker installing');
