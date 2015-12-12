@@ -11,7 +11,7 @@ this.addEventListener('install', function (event) {
             //    '/app/view2/view2.html',
             //    '/app/view1/fallback.html'
             //]);
-            return cache.addAll(OFFLINK_CACHE);
+            return cache.addAll(OFFLINK_STATIC_CACHE);
         })
     );
 });
@@ -31,6 +31,12 @@ this.addEventListener('fetch', function (event) {
         console.log("fallback!");
         return caches.match('/app/view1/fallback.html');
     }));
+    console.log("EVENT URL : " + event.request.url);
+    if (OFFLINK_DYNAMIC_CACHE[event.request.url] != null) {
+        fetch(OFFLINK_DYNAMIC_CACHE[event.request.url]).then(function (r) {
+            cache.put(OFFLINK_DYNAMIC_CACHE[event.request.url], r);
+        });
+    }
 });
 
 this.addEventListener('activate', function (event) {
