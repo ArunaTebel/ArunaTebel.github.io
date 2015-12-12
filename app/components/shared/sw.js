@@ -3,7 +3,7 @@
  */
 this.addEventListener('install', function (event) {
     event.waitUntil(
-        caches.open('v1').then(function (cache) {
+        caches.open('v2').then(function (cache) {
             return cache.addAll([
                 '/app/view1/view1.html',
                 '/app/view2/view2.html'
@@ -18,7 +18,7 @@ this.addEventListener('fetch', function (event) {
         return fetch(event.request);
     }).then(function (r) {
         response = r;
-        caches.open('v1').then(function (cache) {
+        caches.open('v2').then(function (cache) {
             cache.put(event.request, response);
         });
         return response.clone();
