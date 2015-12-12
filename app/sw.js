@@ -30,7 +30,9 @@ this.addEventListener('fetch', function (event) {
 
                 return fetch(event.request).then(function (response) {
                     console.log('Response from network is:', response);
-                    cache.put(event.request, response);
+                    caches.open(v).then(function (cache) {
+                        cache.put(event.request, response);
+                    });
                     return response.clone();
                 }).catch(function (error) {
                     // This catch() will handle exceptions thrown from the fetch() operation.
