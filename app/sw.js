@@ -58,9 +58,11 @@ this.addEventListener('fetch', function (event) {
     var prefix = self.location.protocol + "//" + self.location.hostname + (self.location.port ? ':' + self.location.port : '');
     var rel_path = (event.request.url + "").split(prefix)[1];
     console.log("rel path " + rel_path);
-    if (OFFLINK_DYNAMIC_CACHE[event.request.url] != null) {
-        fetch(OFFLINK_DYNAMIC_CACHE[event.request.url]).then(function (r) {
-            cache.put(OFFLINK_DYNAMIC_CACHE[event.request.url], r);
+    if (OFFLINK_DYNAMIC_CACHE[rel_path] != null) {
+        fetch(OFFLINK_DYNAMIC_CACHE[rel_path]).then(function (r) {
+            caches.open(v).then(function (cache) {
+                cache.put(OFFLINK_DYNAMIC_CACHE[rel_path], r);
+            });
         });
     }
 });
