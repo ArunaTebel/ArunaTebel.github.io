@@ -2,7 +2,7 @@
  * Created by ArunaTebel on 8/31/2015.
  */
 
-var OfflinkJs = angular.module('OfflinkJs', ['LocalStorageModule']);
+var OfflinkJs = angular.module('OfflinkJs', ['LocalStorageModule', 'ServiceWorkerModule']);
 OfflinkJs.factory("ConnectionDetectorService", [function () {
 
     var conDetectFunction = URL.createObjectURL(new Blob(['(',
@@ -71,19 +71,20 @@ OfflinkJs.config(['$httpProvider', 'localStorageServiceProvider', function ($htt
         .setNotify(true, true);
 }]);
 
-OfflinkJs.factory('ServiceWorkerService', [function () {
+OfflinkJs.factory('ServiceWorkerService', ['swService', function (swService) {
     var res = [];
     return {
         cache: {
-            addAll: function(resources){
-                res = resources;
+            addAll: function (resources) {
+                swService.addAll(resources);
             },
             getAll: function () {
                 return res;
             }
         },
-        register: function (path) {
+        register: function (path, version) {
             if ('serviceWorker' in navigator) {
+                swService.setVersion(version);
                 navigator.serviceWorker.register(path).then(function (reg) {
 
                     if (reg.installing) {

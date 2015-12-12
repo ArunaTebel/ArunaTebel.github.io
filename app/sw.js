@@ -1,6 +1,17 @@
-//var ServiceWorker = angular.module('ServiceWorkerModule', ['OfflinkJs']);
-//ServiceWorker.run(['ServiceWorkerService', function (ServiceWorkerService) {
-var v = 1.1;
+var ServiceWorker = angular.module('ServiceWorkerModule', []);
+var res = [];
+var v;
+ServiceWorker.factory('swService', [function () {
+    return {
+        addAll: function (resources) {
+            res = resources;
+        },
+        setVersion: function (version) {
+            v = version;
+        }
+    }
+}]);
+
 this.addEventListener('install', function (event) {
     console.log("install event");
     event.waitUntil(
@@ -10,7 +21,7 @@ this.addEventListener('install', function (event) {
             //    '/app/view2/view2.html',
             //    '/app/view1/fallback.html'
             //]);
-            return cache.addAll(ServiceWorkerService.getAll());
+            return cache.addAll(res);
         })
     );
 });
@@ -45,5 +56,3 @@ this.addEventListener('activate', function (event) {
         })
     );
 });
-
-//}]);

@@ -18,5 +18,5 @@ angular.module('myApp', [
             '/app/view1/fallback.html'
         ];
         ServiceWorkerService.cache.addAll(resources);
-        ServiceWorkerService.register('/app/sw.js');
+        ServiceWorkerService.register('/app/sw.js', 1.3);
     }]);
