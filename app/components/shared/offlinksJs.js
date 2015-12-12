@@ -71,7 +71,7 @@ OfflinkJs.config(['$httpProvider', 'localStorageServiceProvider', function ($htt
         .setNotify(true, true);
 }]);
 
-OfflinkJs.factory('serviceWorkerService', [function () {
+OfflinkJs.factory('ServiceWorkerService', [function () {
     var res = [];
     return {
         cache: {
