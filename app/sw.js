@@ -27,7 +27,6 @@ this.addEventListener('fetch', function (event) {
             if (r) {
                 return r;
             } else {
-
                 return fetch(event.request).then(function (response) {
                     console.log('Response from network is:', response);
                     caches.open(v).then(function (cache) {
@@ -56,11 +55,14 @@ this.addEventListener('fetch', function (event) {
     //    return caches.match('/app/view1/fallback.html');
     //}));
     console.log("EVENT URL : " + event.request.url);
-    //if (OFFLINK_DYNAMIC_CACHE[event.request.url] != null) {
-    //    fetch(OFFLINK_DYNAMIC_CACHE[event.request.url]).then(function (r) {
-    //        cache.put(OFFLINK_DYNAMIC_CACHE[event.request.url], r);
-    //    });
-    //}
+    console.log("DOMAIN : " + self.location.hostname);
+    console.log("DOMAIN : " + self.location.port);
+    console.log("DOMAIN : " + self.location.protocol);
+    if (OFFLINK_DYNAMIC_CACHE[event.request.url] != null) {
+        fetch(OFFLINK_DYNAMIC_CACHE[event.request.url]).then(function (r) {
+            cache.put(OFFLINK_DYNAMIC_CACHE[event.request.url], r);
+        });
+    }
 });
 
 this.addEventListener('activate', function (event) {
