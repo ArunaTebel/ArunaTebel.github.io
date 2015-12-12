@@ -1,3 +1,4 @@
+'use strict';
 var ServiceWorker = angular.module('ServiceWorkerModule', []);
 var res = [];
 var v;
