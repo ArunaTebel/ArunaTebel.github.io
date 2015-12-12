@@ -1,4 +1,4 @@
-var v = "1.2";
+var v = "1.3";
 if ('undefined' === typeof window) {
     importScripts('manifest.js');
 }
