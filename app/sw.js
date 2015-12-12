@@ -23,6 +23,7 @@ this.addEventListener('fetch', function (event) {
         return fetch(event.request);
     }).then(function (r) {
         response = r;
+        console.log("responseeeeee : " + r);
         caches.open(v).then(function (cache) {
             cache.put(event.request, response);
         });
