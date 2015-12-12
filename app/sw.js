@@ -15,7 +15,7 @@ this.addEventListener('install', function (event) {
 });
 
 this.addEventListener('fetch', function (event) {
-    console.log("hfhfhf");
+    console.log("fetch event");
     var response;
     event.respondWith(caches.match(event.request).catch(function () {
         return fetch(event.request);
@@ -26,14 +26,14 @@ this.addEventListener('fetch', function (event) {
         });
         return response.clone();
     }).catch(function () {
-        console.log("asdasdasdasdasda");
+        console.log("fallback!");
         return caches.match('/app/view1/fallback.html');
     }));
 });
 
 this.addEventListener('activate', function (event) {
     var cacheWhitelist = [v];
-    console.log("activ");
+    console.log("activate event");
     event.waitUntil(
         caches.keys().then(function (keyList) {
             return Promise.all(keyList.map(function (key) {
