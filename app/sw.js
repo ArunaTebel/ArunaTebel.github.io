@@ -36,6 +36,7 @@ this.addEventListener('fetch', function (event) {
 this.addEventListener('activate', function (event) {
     var cacheWhitelist = [v];
     console.log("activate event");
+    console.log(cacheWhitelist);
     event.waitUntil(
         caches.keys().then(function (keyList) {
             return Promise.all(keyList.map(function (key) {
