@@ -1,7 +1,7 @@
 /**
  * Created by ArunaTebel on 12/12/2015.
  */
-var v = 1.0;
+var v = 1.1;
 this.addEventListener('install', function (event) {
     event.waitUntil(
         caches.open(v).then(function (cache) {
@@ -14,6 +14,7 @@ this.addEventListener('install', function (event) {
 });
 
 this.addEventListener('fetch', function (event) {
+    console.log("hfhfhf");
     var response;
     event.respondWith(caches.match(event.request).catch(function () {
         return fetch(event.request);
