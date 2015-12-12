@@ -19,20 +19,40 @@ this.addEventListener('install', function (event) {
 this.addEventListener('fetch', function (event) {
     console.log("fetch event");
     var response;
-    event.respondWith(caches.match(event.request).catch(function () {
+    event.respondWith(caches.match(event.request)/**.catch(function () {
         console.log(event.request);
         return fetch(event.request);
-    }).then(function (r) {
-        response = r;
-        console.log("responseeeeee : " + r);
-        caches.open(v).then(function (cache) {
-            cache.put(event.request, response);
-        });
-        return response.clone();
-    }).catch(function () {
-        console.log("fallback!");
-        return caches.match('/app/view1/fallback.html');
-    }));
+    })**/.then(function (r) {
+            response = r;
+            if (r) {
+                return r;
+            } else {
+
+                return fetch(event.request).then(function (response) {
+                    console.log('Response from network is:', response);
+                    cache.put(event.request, response);
+                    return response.clone();
+                }).catch(function (error) {
+                    // This catch() will handle exceptions thrown from the fetch() operation.
+                    // Note that a HTTP error response (e.g. 404) will NOT trigger an exception.
+                    // It will return a normal response object that has the appropriate error code set.
+                    console.error('Fetching failed:', error);
+                    console.log("fallback!");
+                    return caches.match('/app/view1/fallback.html');
+                    //throw error;
+                });
+                //
+                //console.log("responseeeeee : " + r);
+                //caches.open(v).then(function (cache) {
+                //    cache.put(event.request, response);
+                //});
+            }
+            //return response.clone();
+        }));
+    //.catch(function () {
+    //    console.log("fallback!");
+    //    return caches.match('/app/view1/fallback.html');
+    //}));
     console.log("EVENT URL : " + event.request.url);
     //if (OFFLINK_DYNAMIC_CACHE[event.request.url] != null) {
     //    fetch(OFFLINK_DYNAMIC_CACHE[event.request.url]).then(function (r) {
