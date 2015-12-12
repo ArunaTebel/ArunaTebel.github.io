@@ -1,4 +1,4 @@
-var v = 1.4;
+var v = 1.0;
 if ('undefined' === typeof window) {
     importScripts('manifest.js');
 }
@@ -24,7 +24,7 @@ this.addEventListener('fetch', function (event) {
     }).then(function (r) {
         response = r;
         caches.open(v).then(function (cache) {
-            //cache.put(event.request, response);
+            cache.put(event.request, response);
         });
         return response.clone();
     }).catch(function () {
@@ -39,6 +39,7 @@ this.addEventListener('activate', function (event) {
     event.waitUntil(
         caches.keys().then(function (keyList) {
             return Promise.all(keyList.map(function (key) {
+                console.log(key);
                 if (cacheWhitelist.indexOf(key) === -1) {
                     return caches.delete(keyList[key]);
                 }
