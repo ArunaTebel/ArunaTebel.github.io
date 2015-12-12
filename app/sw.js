@@ -1,4 +1,4 @@
-var v = 1.0;
+var v = 1.1;
 if ('undefined' === typeof window) {
     importScripts('manifest.js');
 }
@@ -41,7 +41,7 @@ this.addEventListener('activate', function (event) {
             return Promise.all(keyList.map(function (key) {
                 console.log(key);
                 if (cacheWhitelist.indexOf(key) === -1) {
-                    return caches.delete(keyList[key]);
+                    return caches.delete(key);
                 }
             }));
         })
