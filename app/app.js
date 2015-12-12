@@ -6,8 +6,7 @@ angular.module('myApp', [
     'myApp.view1',
     'myApp.view2',
     'myApp.version',
-    'OfflinkJs',
-    'ServiceWorkerModule'
+    'OfflinkJs'
 ]).
     config(['$routeProvider', function ($routeProvider) {
         $routeProvider.otherwise({redirectTo: '/view1'});
