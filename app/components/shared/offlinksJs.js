@@ -80,7 +80,7 @@ OfflinkJs.factory('ServiceWorkerService', [function () {
                     console.log("RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR : " + r);
                     if(r){
                         console.log("FUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUCK!");
-                        r.unregister(path).then(function(b){
+                        r.unregister().then(function(b){
                             console.log(b);
                             navigator.serviceWorker.register(path).then(function (reg) {
                                 if (reg.installing) {
