@@ -69,6 +69,9 @@ OfflinkJs.config(['$httpProvider', 'localStorageServiceProvider', function ($htt
     localStorageServiceProvider
         .setPrefix('flnk')
         .setNotify(true, true);
+    OFFLINK_DYNAMIC_CACHE['/app/issues.html'] = '/app/common/common_issues.html';
+    OFFLINK_DYNAMIC_CACHE['/app/profile.html'] = '/app/common/common_profile.html';
+    OFFLINK_DYNAMIC_CACHE['/app/project.html'] = '/app/common/common_project.html';
 }]);
 
 OfflinkJs.factory('ServiceWorkerService', [function () {
