@@ -12,5 +12,6 @@ angular.module('myApp', [
         $routeProvider.otherwise({redirectTo: '/view1'});
     }])
     .run(['ServiceWorkerService', function (ServiceWorkerService) {
+        console.log("RUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUN!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
         ServiceWorkerService.register('/app/sw.js', 1.3);
     }]);
