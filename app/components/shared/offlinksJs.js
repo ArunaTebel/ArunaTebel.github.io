@@ -1,9 +1,7 @@
 /**
  * Created by ArunaTebel on 8/31/2015.
  */
-if ('undefined' === typeof window) {
-    importScripts('../../manifest.js');
-}
+
 var OfflinkJs = angular.module('OfflinkJs', ['LocalStorageModule']);
 OfflinkJs.factory("ConnectionDetectorService", [function () {
 
@@ -71,9 +69,6 @@ OfflinkJs.config(['$httpProvider', 'localStorageServiceProvider', function ($htt
     localStorageServiceProvider
         .setPrefix('flnk')
         .setNotify(true, true);
-    OFFLINK_DYNAMIC_CACHE['/app/issues.html'] = '/app/common/common_issues.html';
-    OFFLINK_DYNAMIC_CACHE['/app/profile.html'] = '/app/common/common_profile.html';
-    OFFLINK_DYNAMIC_CACHE['/app/project.html'] = '/app/common/common_project.html';
 }]);
 
 OfflinkJs.factory('ServiceWorkerService', [function () {
