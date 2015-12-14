@@ -77,6 +77,7 @@ OfflinkJs.factory('ServiceWorkerService', [function () {
         register: function (path) {
             if ('serviceWorker' in navigator) {
                 navigator.serviceWorker.getRegistration().then(function(r){
+                    console.log("RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR : " + r);
                     if(r){
                         console.log("FUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUCK!");
                         r.unregister(path).then(function(boolean){
