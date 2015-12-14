@@ -11,6 +11,6 @@ var OFFLINK_STATIC_CACHE = [
 var OFFLINK_DYNAMIC_CACHE = {
     //'/app/issues.html': '/app/common/common_issues.html',
     //'/app/profile.html': '/app/common/common_profile.html',
-    '/app/project.html': '/app/common/common_project.html'
+    //'/app/project.html': '/app/common/common_project.html'
     //'/app/projects.html': '/app/common/common_project.html'
 };
