@@ -1,7 +1,9 @@
 /**
  * Created by ArunaTebel on 8/31/2015.
  */
-
+if ('undefined' === typeof window) {
+    importScripts('../../manifest.js');
+}
 var OfflinkJs = angular.module('OfflinkJs', ['LocalStorageModule']);
 OfflinkJs.factory("ConnectionDetectorService", [function () {
 
