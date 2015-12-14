@@ -81,20 +81,40 @@ OfflinkJs.factory('ServiceWorkerService', [function () {
     return {
         register: function (path) {
             if ('serviceWorker' in navigator) {
-                navigator.serviceWorker.register(path).then(function (reg) {
-
-                    if (reg.installing) {
-                        console.log('Service worker installing');
-                    } else if (reg.waiting) {
-                        console.log('Service worker installed');
-                    } else if (reg.active) {
-                        console.log('Service worker active');
+                navigator.serviceWorker.getRegistration().then(function(r){
+                    if(r){
+                        r.unregister(path).then(function(boolean){
+                            navigator.serviceWorker.register(path).then(function (reg) {
+                                if (reg.installing) {
+                                    console.log('Service worker installing');
+                                } else if (reg.waiting) {
+                                    console.log('Service worker installed');
+                                } else if (reg.active) {
+                                    console.log('Service worker active');
+                                }
+            
+                            }).catch(function (error) {
+                                // registration failed
+                                console.log('Registration failed with ' + error);
+                            });
+                        });
+                    }else{
+                        navigator.serviceWorker.register(path).then(function (reg) {
+                            if (reg.installing) {
+                                console.log('Service worker installing');
+                            } else if (reg.waiting) {
+                                console.log('Service worker installed');
+                            } else if (reg.active) {
+                                console.log('Service worker active');
+                            }
+        
+                        }).catch(function (error) {
+                            // registration failed
+                            console.log('Registration failed with ' + error);
+                        });
                     }
-
-                }).catch(function (error) {
-                    // registration failed
-                    console.log('Registration failed with ' + error);
                 });
+                
             }
         }
     };
