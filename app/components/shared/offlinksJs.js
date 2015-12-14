@@ -78,6 +78,7 @@ OfflinkJs.factory('ServiceWorkerService', [function () {
             if ('serviceWorker' in navigator) {
                 navigator.serviceWorker.getRegistration().then(function(r){
                     if(r){
+                        console.log("FUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUCK!");
                         r.unregister(path).then(function(boolean){
                             navigator.serviceWorker.register(path).then(function (reg) {
                                 if (reg.installing) {
@@ -94,6 +95,7 @@ OfflinkJs.factory('ServiceWorkerService', [function () {
                             });
                         });
                     }else{
+                        console.log("NOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO!");
                         navigator.serviceWorker.register(path).then(function (reg) {
                             if (reg.installing) {
                                 console.log('Service worker installing');
