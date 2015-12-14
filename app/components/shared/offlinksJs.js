@@ -80,7 +80,8 @@ OfflinkJs.factory('ServiceWorkerService', [function () {
                     console.log("RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR : " + r);
                     if(r){
                         console.log("FUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUCK!");
-                        r.unregister(path).then(function(boolean){
+                        r.unregister(path).then(function(b){
+                            console.log(b);
                             navigator.serviceWorker.register(path).then(function (reg) {
                                 if (reg.installing) {
                                     console.log('Service worker installing');
@@ -94,6 +95,8 @@ OfflinkJs.factory('ServiceWorkerService', [function () {
                                 // registration failed
                                 console.log('Registration failed with ' + error);
                             });
+                        }).catch(function(error){
+                            console.log("haffa!!!!!!!!!!!!!!!!!!!!!" + error);
                         });
                     }else{
                         console.log("NOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO!");
